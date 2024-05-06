@@ -22,9 +22,14 @@
             </el-form>
             <div class="divider"></div>
             <div class="fast-login">
-                <div class="fast-login-item red"></div>
-                <div class="fast-login-item green"></div>
-                <div class="fast-login-item blue"></div>
+                <!-- <div class="fast-login-item red"></div> -->
+                <div class="fast-login-item green">
+                    <SvgIcon iconName="icon-weixin" :size='"32px"' :color="'#ffffff'"></SvgIcon>
+                    
+                </div>
+                <div class="fast-login-item blue">
+                    <SvgIcon iconName="icon-qq" :size='"32px"' :color="'#ffffff'"></SvgIcon>
+                </div>
             </div>
 
         </div>
@@ -59,8 +64,8 @@ const validatePass = (rule: any, value: any, callback: any) => {
 }
 
 const ruleForm = reactive({
-    username: '',
-    password: '',
+    username: 'admin',
+    password: '123456',
 })
 
 const rules = reactive<FormRules<typeof ruleForm>>({
@@ -72,27 +77,28 @@ const submitForm = (formEl: FormInstance | undefined) => {
     if (!formEl) return
     formEl.validate((valid) => {
         if (valid) {
-            $Login(ruleForm).then(res => {
-                console.log(res)
-                if (res.code === 200) {
-                    sessionStorage.setItem('token', res.token);
-                    ElMessage({
-                        message: '登录成功',
-                        type: 'success',
-                    })
-                    router.push('/index')
-                }else {
-                    ElMessage({
-                        message: res.msg,
-                        type: 'error',
-                    })
-                }
-            }).catch(err => {
-                ElMessage({
-                        message: JSON.stringify(err),
-                        type: 'error',
-                    })
-            })
+            router.push('/index')
+            // $Login(ruleForm).then(res => {
+            //     console.log(res)
+            //     if (res.code === 200) {
+            //         sessionStorage.setItem('token', res.token);
+            //         ElMessage({
+            //             message: '登录成功',
+            //             type: 'success',
+            //         })
+            //         router.push('/index')
+            //     }else {
+            //         ElMessage({
+            //             message: res.msg,
+            //             type: 'error',
+            //         })
+            //     }
+            // }).catch(err => {
+            //     ElMessage({
+            //             message: JSON.stringify(err),
+            //             type: 'error',
+            //         })
+            // })
         } else {
             console.log('提交失败')
             return false
@@ -205,6 +211,9 @@ const resetForm = (formEl: FormInstance | undefined) => {
                 width: 50px;
                 border-radius: 50%;
                 overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .red {
@@ -212,11 +221,11 @@ const resetForm = (formEl: FormInstance | undefined) => {
             }
 
             .green {
-                background-color: green;
+                background-color: #02cd5a;
             }
 
             .blue {
-                background-color: blue;
+                background-color: #26a5f0;
             }
         }
     }
