@@ -7,7 +7,13 @@ import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
+import '@/assets/iconfont/iconfont.js'
+import SvgIcon from '@/components/SvgIcon.vue'
+import { require } from '@/common/utils'
+
 createApp(App)
 .use(router)
 .use(ElementPlus)
+.use(require)
+.component('SvgIcon', SvgIcon)
 .mount('#app')
