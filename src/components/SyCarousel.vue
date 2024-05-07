@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { require } from "@/common/utils"
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps({
     imgList: {
@@ -108,12 +108,18 @@ const leaveIndex = () => {
     /*background-color: #42b983;*/
 }
 
+.carousel-content, .show-carousel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .carousel-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -20%);
-    font-size: 70px;
+    font-size: 50px;
     font-weight: 700;
     text-align: center;
     opacity: 0;
@@ -123,7 +129,7 @@ const leaveIndex = () => {
 
 .show-carousel-content {
     position: absolute;
-    font-size: 70px;
+    font-size: 50px;
     font-weight: 700;
     text-align: center;
     top: 50%;
@@ -163,7 +169,7 @@ const leaveIndex = () => {
 
 .img-btn {
     height: 65px;
-    padding: 0 20px;
+    padding: 0 60px;
     border-radius: 33px;
     font-size: 24px;
     font-weight: 700;
