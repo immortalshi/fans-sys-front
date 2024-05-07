@@ -10,6 +10,7 @@ import 'element-plus/dist/index.css'
 import '@/assets/iconfont/iconfont.js'
 import SvgIcon from '@/components/SvgIcon.vue'
 import { require } from '@/common/utils'
+import 'wow.js/css/libs/animate.css'
 
 createApp(App)
 .use(router)
