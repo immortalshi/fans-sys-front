@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "axios": "^1.6.8",
     "element-plus": "^2.7.0",
     "md5js": "^1.0.7",
