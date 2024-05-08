@@ -170,6 +170,7 @@ const leaveIndex = () => {
 .img-btn {
     height: 65px;
     padding: 0 60px;
+    margin-top: 20px;
     border-radius: 33px;
     font-size: 24px;
     font-weight: 700;

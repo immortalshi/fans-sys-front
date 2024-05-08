@@ -1,7 +1,7 @@
 <template>
     <div class="com-container">
         <h2 class="title">{{ titles.title }}</h2>
-        <el-tooltip class="box-item" effect="light" :content="titles.hide" placement="top-end">
+        <el-tooltip class="box-item" effect="light" :content="titles.hide" placement="top">
             <p class="sub-title">{{ titles.subTitle }}</p>
         </el-tooltip>
         

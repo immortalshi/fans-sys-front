@@ -8,17 +8,16 @@
         <div class="page-container">
             <!-- 头部导航 -->
             <div class="header-container">
-                <!-- 
-                <div class="nav">
-                    <div class="nav-item" v-for="(item, i) in navList" :key="i" @click="nav(item.url)" :title="item.name">
-                        {{ item.name }}
-                    </div>
-                </div> -->
                 <div class="edit">
                     <SvgIcon :iconName="isMenuOpen ? 'icon-shouqi1' : 'icon-zhankai'" :size='"32px"' :color="'#ffffff'"
                         @click="handleMenu"></SvgIcon>
                 </div>
-
+                <div class="nav">
+                    <div class="nav-item" v-for="(item, i) in menus" :key="i" @click="nav(item.url)" :title="item.name">
+                        {{ item.name }}
+                    </div>
+                </div>
+                <div class="user"></div>
             </div>
 
             <div class="main-container">
@@ -30,11 +29,12 @@
                 <div class="content-container">
                     <!--业务范围-->
                     <div class="business">
-                        <SyTitle :titles="titleList[0]" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <SyTitle :titles="titleList[0]" class="wow fadeInUp" data-wow-duration="1s"
+                            data-wow-delay="0.3s">
                         </SyTitle>
                         <div class="bus-container">
                             <div class="bus-item wow fadeInUp" :data-wow-delay="(0.5 + i * 0.3) + 's'"
-                                v-for="(item, i) in imgList.slice(0,6)" :key="i">
+                                v-for="(item, i) in imgList.slice(0, 6)" :key="i">
                                 <SyBusrCard :busInfo="item"></SyBusrCard>
                             </div>
                         </div>
@@ -70,9 +70,11 @@ import SyTitle from '@/components/SyTitle.vue';
 import SyUserCard from "@/components/SyUserCard.vue";
 import SyBusrCard from '@/components/SyBusCard.vue';
 import imgs from "@/assets/json/img.json";
+import players from "@/assets/json/player.json";
+import menus from "@/assets/json/menuUrls.json";
 import titles from "@/assets/json/titles.json";
-import players from "@/assets/json/player.json"
 import WOW from "wow.js";
+
 
 onMounted(() => {
     var wow = new WOW({
@@ -102,6 +104,10 @@ let isMenuOpen: boolean = false;
 const handleMenu = () => {
     isMenuOpen = !isMenuOpen
     that.$forceUpdate()
+}
+
+const nav = (url: String) => {
+    console.log(url)
 }
 
 const imgList: Array<Object> = imgs
@@ -148,8 +154,8 @@ const playerList: Array<Object> = players
         flex: 1;
 
         .header-container {
-            width: 100%;
             max-width: 100vw;
+            width: 100%;
             height: 70px;
             background-color: rgba(51, 51, 51, .8);
             position: fixed;
@@ -158,7 +164,66 @@ const playerList: Array<Object> = players
             align-items: center;
 
             .edit {
+                width: 33%;
+                display: flex;
+                justify-content: flex-start;
                 padding: 0 20px;
+            }
+
+            .nav {
+                flex: 1;
+                // max-width: 50vw;
+                height: 100%;
+                // position: absolute;
+                // top: 50%;
+                // left: 50%;
+                // transform: translate(-50%, -50%);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                /*background: #F1E9D2;*/
+
+                .nav-item {
+                    width: 120px;
+                    // padding: 0 20px;
+                    height: 35px;
+                    border-radius: 18px;
+                    background: #27E1C1;
+                    transition: all 0.5s;
+                    font-size: 16px;
+                    color: #FFFFFF;
+                    /*color: #DBDBDB;*/
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0px 10px;
+                    cursor: pointer;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    word-break: normal;
+
+                    &:hover {
+                        margin: 0px 10px;
+                        width: 120px;
+                        height: 35px;
+                        border-radius: 35px 0 35px 0;
+                        background: #27E1C1;
+                        font-size: 16px;
+                        color: #FFFFFF;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transform: translateY(-5px);
+                        text-shadow: 3px 3px 4px #999999;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .user {
+                width: 33%;
+                // flex: 1
             }
         }
 
