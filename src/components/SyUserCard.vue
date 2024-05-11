@@ -18,7 +18,7 @@
 import { require } from "@/common/utils"
 const props = defineProps({
     playerList: {
-        type: Array,
+        type: Array<any>,
         required: true,
        
     },
