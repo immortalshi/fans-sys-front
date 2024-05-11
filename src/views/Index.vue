@@ -64,6 +64,7 @@
 
 <script setup lang="ts">
 import { getCurrentInstance, onMounted } from 'vue';
+import {useRouter} from 'vue-router'
 import FlowText from "@/components/FlowText.vue";
 import SyCarousel from "@/components/SyCarousel.vue";
 import SyTitle from '@/components/SyTitle.vue';
@@ -74,6 +75,8 @@ import players from "@/assets/json/player.json";
 import menus from "@/assets/json/menuUrls.json";
 import titles from "@/assets/json/titles.json";
 import WOW from "wow.js";
+
+const router = useRouter()
 
 
 onMounted(() => {
@@ -108,6 +111,8 @@ const handleMenu = () => {
 
 const nav = (url: String) => {
     console.log(url)
+    router.push('/about')
+
 }
 
 const imgList: Array<Object> = imgs
