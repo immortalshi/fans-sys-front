@@ -1,4 +1,4 @@
-export const require = (imgPath) => {
+export const require = (imgPath:any) => {
     try {
       const handlePath = imgPath.replace('@', '..');
       return new URL(handlePath, import.meta.url).href;
